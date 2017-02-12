@@ -25,7 +25,7 @@ yo botkit
 
 ## License
 
-Apache-2.0 © [Ouadie Lahdioui](www.twitter.com/lahdiouiouadie)
+This project is licensed under the terms of the MIT license. Full license text is available in [LICENSE.md](LICENSE.md).
 
 
 [npm-image]: https://badge.fury.io/js/generator-botkit.svg

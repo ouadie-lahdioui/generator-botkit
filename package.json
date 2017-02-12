@@ -1,19 +1,17 @@
 {
   "name": "generator-botkit",
   "version": "0.0.0",
-  "description": "Yeoman generator for Botkit",
-  "homepage": "www.howdy.ai/botkit",
-  "author": {
-    "name": "Ouadie Lahdioui",
-    "email": "ouadiesoft@gmail.com",
-    "url": "www.twitter.com/lahdiouiouadie"
-  },
+  "description": "Scaffold out a Botkit based bot",
+  "author": "Ouadie LAHDIOUI",
   "files": [
     "generators"
   ],
   "main": "generators/index.js",
   "keywords": [
-    "bot; chatbot; botkit; yeoman",
+    "bot",
+    "chatbot",
+    "botkit",
+    "yeoman",
     "yeoman-generator"
   ],
   "dependencies": {
@@ -41,10 +39,13 @@
       "mocha": true
     }
   },
-  "repository": "ouadie-lahdioui/generator-botkit",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ouadie-lahdioui/generator-botkit.git"
+  },
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
-  "license": "Apache-2.0"
+  "license": "MIT"
 }

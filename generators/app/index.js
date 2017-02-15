@@ -21,7 +21,7 @@ module.exports = class extends Generator {
   prompting() {
     let prompts = [];
 
-    if(!this.options['botName']) {
+    if (!this.options['botName']) {
       prompts.push({
         type: 'input',
         name: 'botName',
@@ -30,57 +30,57 @@ module.exports = class extends Generator {
       });
     }
 
-    if(!this.options['messaging']) {
+    if (!this.options['messaging']) {
       prompts.push({
         type: 'list',
         name: 'messaging',
         message: 'What is the messaging platform ?',
-        choices: [ 'Facebook', 'Slack', 'Twilio', 'Nexmo']
+        choices: ['Facebook', 'Slack', 'Twilio', 'Nexmo']
       });
     }
 
-    if(!this.options['nlp']) {
+    if (!this.options['nlp']) {
       prompts.push({
         type: 'list',
         name: 'nlp',
         message: 'Would you like to enable a Natural Language Processing tool ? ',
-        choices: [ 'Nope', 'Wit.ai', 'Api.ai', 'Recast.ai', 'Watson', 'Luis']
+        choices: ['Nope', 'Wit.ai', 'Api.ai', 'Recast.ai', 'Watson', 'Luis']
       });
     }
 
-    if(!this.options['starage']) {
+    if (!this.options['starage']) {
       prompts.push({
         type: 'list',
         name: 'starage',
         message: 'Which storage system you need to keep data ?',
-        choices: [ 'No one', 'MongoDB', 'RedisDB', 'CouchDB', 'Datastore', 'Firebase', 'Postgres']
+        choices: ['No one', 'MongoDB', 'RedisDB', 'CouchDB', 'Datastore', 'Firebase', 'Postgres']
       });
     }
 
-    if(!this.options['dependencyManagementTool']) {
+    if (!this.options['dependencyManagementTool']) {
       prompts.push({
         type: 'list',
         name: 'dependencyManagementTool',
         message: 'Would you like to use NPM or YARN ?',
-        choices: [ 'NPM', 'Yarn']
+        choices: ['NPM', 'Yarn']
       });
     }
 
-    if(!this.options['unitTest']) {
+    if (!this.options['unitTest']) {
       prompts.push({
         type: 'list',
         name: 'unitTest',
         message: 'Would you like to use ES6 or ECMASCRIPT 5 ?',
-        choices: [ 'ES6', 'ECMASCRIPT 5']
+        choices: ['ES6', 'ECMASCRIPT 5']
       });
     }
 
-    if(!this.options['jsVersion']) {
+    if (!this.options['jsVersion']) {
       prompts.push({
         type: 'list',
         name: 'jsVersion',
         message: 'Wich JavaScript testing framework you like to use ?',
-        choices: [ 'Mocha', 'Jasmine']
+        choices: ['Mocha', 'Jasmine']
       });
     }
 
@@ -89,19 +89,19 @@ module.exports = class extends Generator {
       name: 'features',
       message: 'Which additional features would you like to include?',
       choices: [
-          {
-            name: 'Sass',
-            value: 'includeSass',
-            checked: true
-          }, {
-            name: 'Bootstrap',
-            value: 'includeBootstrap',
-            checked: true
-          }, {
-            name: 'Modernizr',
-            value: 'includeModernizr',
-            checked: true
-          }
+        {
+          name: 'Sass',
+          value: 'includeSass',
+          checked: true
+        }, {
+          name: 'Bootstrap',
+          value: 'includeBootstrap',
+          checked: true
+        }, {
+          name: 'Modernizr',
+          value: 'includeModernizr',
+          checked: true
+        }
       ],
       when: function (answers) {
         return answers['messaging'] === 'Facebook';
@@ -118,13 +118,12 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('index.js'),
       this.destinationPath('index.js'),
-      { name: this.answers.botName }
+      {name: this.answers.botName}
     );
   }
 
   install() {
     console.log('==>' + JSON.stringify(this.answers));
-    //this.installDependencies();
   }
 
   end() {

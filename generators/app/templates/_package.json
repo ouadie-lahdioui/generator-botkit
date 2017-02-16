@@ -1,12 +1,18 @@
 {
   "name": "<%= botName %>",
+  "author" : "<%= author %>",
   "dependencies": {
-    "botbuilder": "^3.4.4",
-    "dotenv": "^2.0.0",
-    "restify": "^4.3.0"
+    "bluebird": "^3.3.3",
+    "body-parser": "~1.14.1",
+    "botkit": "^0.4.9",
+    "config": "^1.24.0",
+    "ejs": "^2.5.5",
+    "express": "~4.13.3",
+    "unirest": "*"
   },
   "devDependencies": {
-    "@types/node": "^6.0.52",
-    "@types/restify": "^2.0.35"
+    "istanbul": "0.4.3",
+    "jasmine": "^2.5.2",
+    "jshint-html-reporter": "^0.2.4"
   }
 }

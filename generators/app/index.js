@@ -101,16 +101,16 @@ module.exports = class extends Generator {
       message: 'Which additional features would you like to include?',
       choices: [
         {
-          name: 'Sass',
-          value: 'includeSass',
+          name: 'hello',
+          value: 'includeHello',
           checked: true
         }, {
-          name: 'Bootstrap',
-          value: 'includeBootstrap',
+          name: 'silent push reply',
+          value: 'includeSilentPush',
           checked: true
         }, {
-          name: 'Modernizr',
-          value: 'includeModernizr',
+          name: 'shutdown',
+          value: 'includShutdown',
           checked: true
         }
       ],
@@ -138,13 +138,24 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
-      {botName: this.answers.botName}
+      {
+        botName: this.answers.botName,
+        author: this._getAuthor()
+      }
     );
 
     // .gitignore
     this.fs.copy(
       this.templatePath('_gitignore'),
       this.destinationPath('.gitignore')
+    );
+
+    // Readme.md
+    this.fs.copyTpl(this.templatePath('_README.md'), this.destinationPath('README.md'),
+      {
+        botName: this.answers.botName,
+        description: this.answers.description
+      }
     );
 
     // Environment variables

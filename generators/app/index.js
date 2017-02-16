@@ -1,6 +1,6 @@
 const Generator = require('yeoman-generator');
 const BotkitGreeting = require('../../lib/BotkitGreeting');
-const mkdirp = require('mkdirp');
+const BotkitConst = require('../../lib/BotkitConst');
 
 const chalk = require('chalk');
 const _ = require('lodash');
@@ -35,7 +35,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'messaging',
         message: 'What is the messaging platform ?',
-        choices: ['Facebook', 'Slack', 'Twilio', 'Nexmo']
+        choices: [BotkitConst.FACEBOOK, BotkitConst.SLACK, BotkitConst.TWILIO, BotkitConst.NEXMO]
       });
     }
 
@@ -44,7 +44,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'nlp',
         message: 'Would you like to enable a Natural Language Processing tool ? ',
-        choices: ['Nope', 'Wit.ai', 'Api.ai', 'Recast.ai', 'Watson', 'Luis']
+        choices: [BotkitConst.NOPE, BotkitConst.WIT_AI, BotkitConst.API_AI, BotkitConst.RECAST_AI, BotkitConst.WATSON, BotkitConst.TWILIO]
       });
     }
 
@@ -53,7 +53,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'starage',
         message: 'Which storage system you need to keep data ?',
-        choices: ['No one', 'MongoDB', 'RedisDB', 'CouchDB', 'Datastore', 'Firebase', 'Postgres']
+        choices: [BotkitConst.NO_ONE, BotkitConst.MONGODB, BotkitConst.REDISDB, BotkitConst.COUCHDB, BotkitConst.DATASTORE, BotkitConst.FIREBASE, BotkitConst.POSTGRESQL]
       });
     }
 
@@ -62,7 +62,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'dependencyManagementTool',
         message: 'Would you like to use NPM or YARN ?',
-        choices: ['NPM', 'Yarn']
+        choices: [BotkitConst.NPM, BotkitConst.YARN]
       });
     }
 
@@ -71,7 +71,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'unitTest',
         message: 'Would you like to use ES6 or ECMASCRIPT 5 ?',
-        choices: ['ES6', 'ECMASCRIPT 5']
+        choices: [BotkitConst.ES6, BotkitConst.ECMASCRIPT_5]
       });
     }
 

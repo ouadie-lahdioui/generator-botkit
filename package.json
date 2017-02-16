@@ -1,6 +1,6 @@
 {
   "name": "generator-botkit",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Scaffold out a Botkit based bot",
   "author": "Ouadie LAHDIOUI",
   "files": [

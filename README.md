@@ -1,5 +1,5 @@
-# generator-botkit [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Yeoman generator for Botkit
+# Yeoman generator for Botkit [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+> Allo Aloo, welcome to Botkit, ladies and gentlemen !
 
 <p align="center">
 	<img src="https://github.com/ouadie-lahdioui/generator-botkit/blob/master/images/yeomanBotkit.png">

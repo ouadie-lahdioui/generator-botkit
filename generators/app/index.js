@@ -1,9 +1,11 @@
+const chalk = require('chalk');
+const _ = require('lodash');
+const mkdirp = require('mkdirp');
+const path = require('path');
+
 const Generator = require('yeoman-generator');
 const BotkitGreeting = require('../../lib/BotkitGreeting');
 const BotkitConst = require('../../lib/BotkitConst');
-
-const chalk = require('chalk');
-const _ = require('lodash');
 
 const marvelHeroes = ['SpiderMan', 'CaptainMarvel', 'Hulk', 'Thor', 'IronMan', 'LukeCage', 'BlackWidow', 'Daredevil', 'Wolverine'];
 
@@ -26,6 +28,15 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'botName',
         message: 'What is the Bot name ?',
+        default: marvelHeroes[_.random(marvelHeroes.length - 1)]
+      });
+    }
+
+    if (!this.options['description']) {
+      prompts.push({
+        type: 'input',
+        name: 'description',
+        message: 'What will your bot do ?',
         default: marvelHeroes[_.random(marvelHeroes.length - 1)]
       });
     }
@@ -66,20 +77,20 @@ module.exports = class extends Generator {
       });
     }
 
+    if (!this.options['language']) {
+      prompts.push({
+        type: 'list',
+        name: 'language',
+        message: 'What language do you want to use ?',
+        choices: [BotkitConst.ES6, BotkitConst.ECMASCRIPT_5, BotkitConst.TYPESCRIPT]
+      });
+    }
+
     if (!this.options['unitTest']) {
       prompts.push({
         type: 'list',
         name: 'unitTest',
-        message: 'Would you like to use ES6 or ECMASCRIPT 5 ?',
-        choices: [BotkitConst.ES6, BotkitConst.ECMASCRIPT_5]
-      });
-    }
-
-    if (!this.options['jsVersion']) {
-      prompts.push({
-        type: 'list',
-        name: 'jsVersion',
-        message: 'Wich JavaScript testing framework you like to use ?',
+        message: 'Wich unit testing framework you like to use ?',
         choices: ['Mocha', 'Jasmine']
       });
     }
@@ -115,20 +126,45 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    const directoryName = _.kebabCase(this.answers.botName);
+
+    if (path.basename(this.destinationPath()) !== directoryName) {
+      this.log(chalk.yellow(`Your bot should be in a directory named ${directoryName} I'll automatically create this folder ;)`));
+      mkdirp(directoryName);
+      this.destinationRoot(this.destinationPath(directoryName));
+    }
+
+    // package.json
     this.fs.copyTpl(
-      this.templatePath('index.js'),
-      this.destinationPath('index.js'),
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'),
+      {botName: this.answers.botName}
+    );
+
+    // .gitignore
+    this.fs.copy(
+      this.templatePath('_gitignore'),
+      this.destinationPath('.gitignore')
+    );
+
+    // Environment variables
+    this.fs.copy(
+      this.templatePath('_envVars'),
+      this.destinationPath('.envVars')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('bot.js'),
+      this.destinationPath('bot.js'),
       {name: this.answers.botName}
     );
   }
 
   install() {
-    console.log('==>' + JSON.stringify(this.answers));
+    this.installDependencies({bower: false});
   }
 
   end() {
-    let packages = ['chalk'];
-    this.npmInstall(packages, {'save': true});
     this.log(chalk.blue('Good bye'));
   }
 

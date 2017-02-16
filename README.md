@@ -7,11 +7,11 @@
 
 ## Features
 
-Scaffolds a bot using [Botkit](https://github.com/howdyai/botkit)
+- Scaffolds a bot using [Botkit](https://github.com/howdyai/botkit)
+- Deploy it to Heroku
 
 ## Dependencies
 
-// TODO OLA
 - dotenv for managing environmental variables
 - restify for hosting the API
 
@@ -30,13 +30,6 @@ Then generate your new project:
 yo botkit
 ```
 
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
-
-
 ## Next Steps
 
 - Update .env with your bot App ID and Password (if needed)
@@ -46,7 +39,7 @@ yo botkit
 
 - This project is licensed under the terms of the MIT license and developed with love by [Ouadie LAHDIOUI](www.twitter.com/lahdiouiouadie)
 - Feel free to make PRs, if there's anything you feel we could do better
-- Full license text is available in [LICENSE.md](LICENSE.md). 
+- Full license text is available in [LICENSE.md](LICENSE.md) 
 
 [npm-image]: https://badge.fury.io/js/generator-botkit.svg
 [npm-url]: https://npmjs.org/package/generator-botkit

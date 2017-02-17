@@ -12,6 +12,7 @@ logs
 *.log
 npm-debug.log*
 
+# Var envs file
 .env
 
 # Intellij IDE config folder

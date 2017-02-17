@@ -1,5 +1,5 @@
-## <%= botName %> Bot
-> Allo Aloo, welcome to <%= botName %>, ladies and gentlemen !
+## <%= name %> Bot
+> Allo Aloo, welcome to <%= name %>, ladies and gentlemen !
 
 This bot has been created using [Botkit](https://github.com/howdyai/botkit), and scaffolded using the [Botkit Yeoman generator](https://github.com/ouadie-lahdioui/generator-botkit).
 

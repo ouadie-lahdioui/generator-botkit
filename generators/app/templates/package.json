@@ -1,14 +1,21 @@
 {
-  "name": "<%= botName %>",
+  "name": "<%= name %>",
+  "description": "<%= description %>",
+  "version": "0.0.1",
   "author" : "<%= author %>",
   "dependencies": {
     "bluebird": "^3.3.3",
-    "body-parser": "~1.14.1",
-    "botkit": "^0.4.9",
     "config": "^1.24.0",
     "ejs": "^2.5.5",
-    "express": "~4.13.3",
-    "unirest": "*"
+    "dotenv": "^4.0.0",
+    "unirest": "*",
+    "body-parser": "^1.15.2",
+    "botkit": "^0.4",
+    "dashbot": "0.7.4",
+    "debug": "^2.6.0",
+    "express": "^4.14.0",
+    "request": "^2.79.0",
+    "wordfilter": "^0.2.6"
   },
   "devDependencies": {
     "istanbul": "0.4.3",

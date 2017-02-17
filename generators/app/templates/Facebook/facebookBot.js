@@ -1,3 +1,5 @@
+require('dotenv').config({path: __dirname + '/.env'});
+
 if (!process.env.page_token) {
   console.log('Error: Specify page_token in environment');
   process.exit(1);
@@ -13,35 +15,16 @@ if (!process.env.app_secret) {
   process.exit(1);
 }
 
-var Botkit = require('./lib/Botkit.js');
-var os = require('os');
-var commandLineArgs = require('command-line-args');
-var localtunnel = require('localtunnel');
+const Botkit = require('botkit');
+const debug = require('debug')('botkit:main');
 
-const ops = commandLineArgs([
-  {name: 'lt', alias: 'l', args: 1, description: 'Use localtunnel.me to make your bot available on the web.',
-    type: Boolean, defaultValue: false},
-  {name: 'ltsubdomain', alias: 's', args: 1,
-    description: 'Custom subdomain for the localtunnel.me URL. This option can only be used together with --lt.',
-    type: String, defaultValue: null},
-]);
-
-if(ops.lt === false && ops.ltsubdomain !== null) {
-  console.log("error: --ltsubdomain can only be used together with --lt.");
-  process.exit();
-}
-
-var controller = Botkit.facebookbot({
-  debug: true,
-  log: true,
-  access_token: process.env.page_token,
+const controller = Botkit.facebookbot({
+  receive_via_postback: true,
   verify_token: process.env.verify_token,
-  app_secret: process.env.app_secret,
-  validate_requests: true, // Refuse any requests that don't come from FB on your receive webhook, must provide FB_APP_SECRET in environment variables
+  access_token: process.env.page_token
 });
 
-var bot = controller.spawn({
-});
+let bot = controller.spawn({});
 
 controller.setupWebserver(process.env.port || 3000, function(err, webserver) {
   controller.createWebhookEndpoints(webserver, bot, function() {

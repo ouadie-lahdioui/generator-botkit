@@ -2,11 +2,10 @@ const chalk = require('chalk');
 const _ = require('lodash');
 const mkdirp = require('mkdirp');
 const path = require('path');
-
 const Generator = require('yeoman-generator');
-const BotkitGreeting = require('../../lib/BotkitGreeting');
-const GlobalPromps = require('../../lib/prompts/Global');
-const FacebookPromps = require('../../lib/prompts/Facebook');
+
+const BotkitGreeting = require('../../lib/botkitGreeting');
+const Promps = require('../../lib/prompts');
 const Actions = require('../../lib/actions');
 
 module.exports = class extends Generator {
@@ -22,19 +21,18 @@ module.exports = class extends Generator {
   prompting() {
     let prompts = [];
     let options = this.options;
-    prompts.push(...GlobalPromps(options));
-    prompts.push(...FacebookPromps(options));
+    prompts.push(...Promps.Global(options));
+    prompts.push(...Promps.Facebook(options));
+    prompts.push(...Promps.Slack(options));
+    prompts.push(...Promps.Cisco(options));
     return this.prompt(prompts).then((answers) => {
       this.answers = answers;
     });
   }
 
   writing() {
-    const directoryName = _.kebabCase(this.answers.name);
-
-    Actions({self: this});
-
-    this._createDirectory(directoryName);
+    this._createDirectory(_.kebabCase(this.answers.name));
+    Actions.startAll({self: this});
   }
 
   install() {
@@ -42,14 +40,12 @@ module.exports = class extends Generator {
   }
 
   end() {
-    let congratulation = chalk.bgWhite.gray(`\\/\\/\\/\\/\\/\\/\\/\\/\\ Congratulation ! your ${this.answers.name} Bot has just been created /\\/\\/\\/\\/\\/\\/\\/\\/`);
-    let cd = chalk.bgWhite.gray(`| cd ${_.kebabCase(this.answers.name)}`);
-    let start = chalk.bgWhite.gray(`| npm start`)
-    let end = chalk.bgWhite.gray('\\/\\/\\/\\/\\/\\/\\/\\/\\ Enjoy /\\/\\/\\/\\/\\/\\/\\/\\/');
-    this.log(congratulation);
-    this.log(cd);
-    this.log(start);
-    this.log(end);
+    this.log(chalk.blue('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'));
+    this.log(chalk.blue(`Congratulation ! your Bot has just been created`));
+    this.log(chalk.blue(`Execute your bot application like this :`));
+    this.log(chalk.blue(` - cd ${_.kebabCase(this.answers.name)}`));
+    this.log(chalk.blue(` - npm start`));
+    this.log(chalk.blue('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'));
   }
 
   _createDirectory(directoryName) {

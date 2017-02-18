@@ -2,7 +2,7 @@
 > Allo Aloo, welcome to Botkit, ladies and gentlemen !
 
 <p align="center">
-	<img src="https://github.com/ouadie-lahdioui/generator-botkit/blob/master/images/yeomanBotkit.png">
+	<img src="https://github.com/ouadie-lahdioui/generator-botkit/blob/master/assets/yeomanBotkit.png">
 </p>
 
 ## Features

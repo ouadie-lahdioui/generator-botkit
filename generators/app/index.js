@@ -32,7 +32,7 @@ module.exports = class extends Generator {
 
   writing() {
     this._createDirectory(_.kebabCase(this.answers.name));
-    Actions.startAll({self: this});
+    Actions.startAll({self: this, answers: this.answers});
   }
 
   install() {

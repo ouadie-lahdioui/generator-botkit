@@ -13,7 +13,6 @@
 ## Dependencies
 
 - dotenv for managing environmental variables
-- restify for hosting the API
 
 ## Installation
 

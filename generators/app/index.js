@@ -41,7 +41,7 @@ module.exports = class extends Generator {
 
   end() {
     this.log(chalk.blue('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'));
-    this.log(chalk.blue(`Congratulation ! your Bot has just been created`));
+    this.log(chalk.blue(`Hey there, congratulation ! your Bot has just been created`));
     this.log(chalk.blue(`Execute your bot application like this :`));
     this.log(chalk.blue(` - cd ${_.kebabCase(this.answers.name)}`));
     this.log(chalk.blue(` - npm start`));
